@@ -13,9 +13,6 @@
 #define EMPTY 0
 #define TAKEN 1
 
-int getIncrementalId(int id) {
-	return id += 1;
-}
 
 void showSectors(void) {
 	printf(
@@ -88,11 +85,13 @@ int getEmployeeData(eEmployee list[], int len, int *incrementalId, char name[],
 		showSectors();
 		*sector = pedirIntRango("\nElija un sector: ",
 				"Error, el sector elegido no es válido ", 1, 4);
-		printf("\n=======================================================================");
+		printf(
+				"\n=======================================================================");
 		printf(
 				"\nLos datos ingresados son los siguientes:\n\nNombre: %s | Apellido: %s | Salario: %.2f  | Sector: %d",
 				name, lastName, *salary, *sector);
-		printf("\n=======================================================================\n");
+		printf(
+				"\n=======================================================================\n");
 		*incrementalId = auxId;
 		resultGetData = 0;
 
@@ -136,7 +135,7 @@ int removeEmployee(eEmployee list[], int len, int id) {
 	int atLeastOneRegister = -1;
 
 	if (list != NULL && len > 0) {
-		atLeastOneRegister = checkAtLeastOneRegister(list,len);
+		atLeastOneRegister = checkAtLeastOneRegister(list, len);
 
 		if (atLeastOneRegister == 0) {
 			index = findEmployeeById(list, len, id);
@@ -218,7 +217,7 @@ int modifyEmployee(eEmployee list[], int len, int id) {
 	char lastName[51];
 
 	if (list != NULL && len > 0) {
-		atLeastOneRegister = checkAtLeastOneRegister(list,len);
+		atLeastOneRegister = checkAtLeastOneRegister(list, len);
 
 		if (atLeastOneRegister == 0) {
 			index = findEmployeeById(list, len, id);
@@ -342,7 +341,7 @@ int calculateAverageSalary(eEmployee list[], int len) {
 
 	if (list != NULL && len > 0) {
 
-		atLeastOneRegister = checkAtLeastOneRegister(list,len);
+		atLeastOneRegister = checkAtLeastOneRegister(list, len);
 
 		if (atLeastOneRegister == 0) {
 			for (i = 0; i < len; i++) {
@@ -354,14 +353,16 @@ int calculateAverageSalary(eEmployee list[], int len) {
 			}
 			averageSalaries = calcularPromedio(accruedWages, sumEmployees);
 
-			for(i=0; i<len; i++){
-				if (list[i].isEmpty == TAKEN && list[i].salary>averageSalaries) {
+			for (i = 0; i < len; i++) {
+				if (list[i].isEmpty == TAKEN
+						&& list[i].salary > averageSalaries) {
 					sumEmployeesUpAverageSalary++;
 				}
 
 			}
 			printf("\n==================================================");
-			printf("\nTotal salarios: $%.2f\n\nPromedio salarios: $%.2f\n\nCantidad de empleados que superan el salario promedio: %d",
+			printf(
+					"\nTotal salarios: $%.2f\n\nPromedio salarios: $%.2f\n\nCantidad de empleados que superan el salario promedio: %d",
 					accruedWages, averageSalaries, sumEmployeesUpAverageSalary);
 			printf("\n==================================================");
 			resultCalculate = 0;
@@ -372,17 +373,17 @@ int calculateAverageSalary(eEmployee list[], int len) {
 	return resultCalculate;
 }
 
-int checkAtLeastOneRegister(eEmployee list[], int len){
+int checkAtLeastOneRegister(eEmployee list[], int len) {
 	int resultAtLeastOne = -1;
 	int i;
 	if (list != NULL && len > 0) {
 
-			for (i = 0; i < len; i++) {
-				if (list[i].isEmpty == TAKEN) {
-					resultAtLeastOne = 0;
-					break;
-				}
+		for (i = 0; i < len; i++) {
+			if (list[i].isEmpty == TAKEN) {
+				resultAtLeastOne = 0;
+				break;
 			}
+		}
 	}
 	return resultAtLeastOne;
 }

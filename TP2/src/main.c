@@ -24,7 +24,7 @@ int main(void) {
 	setbuf(stdout, NULL);
 	eEmployee arrayEmployees[Q_EMPLOYEES];
 	initEmployees(arrayEmployees, Q_EMPLOYEES);
-	hardCodeEmployees(arrayEmployees, Q_HARDCODE);
+	//hardCodeEmployees(arrayEmployees, Q_HARDCODE);
 	int option;
 	int incrementalId = 999;
 	char name[51];
@@ -110,7 +110,7 @@ int main(void) {
 							== 0) {
 						if (printEmployees(arrayEmployees, Q_EMPLOYEES) == 0) {
 							if (calculateAverageSalary(arrayEmployees,
-									Q_EMPLOYEES) == 0) {
+							Q_EMPLOYEES) == 0) {
 								printf("\n");
 							} else {
 								printf("\nNo hay salarios para mostrar.");
@@ -123,7 +123,7 @@ int main(void) {
 					}
 					break;
 				}
-			}else{
+			} else {
 				printf("\nError, no hay información para mostrar.");
 			}
 
